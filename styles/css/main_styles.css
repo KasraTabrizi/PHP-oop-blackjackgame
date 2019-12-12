@@ -1,3 +1,26 @@
-
+#wrapper {
+  margin: 0 auto;
+  width: 50%;
+  text-align: center;
+  border: 1px solid black;
+}
+#wrapper #player-container {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+  margin-top: 50px;
+}
+#wrapper #player-container .player-box {
+  border: 1px solid black;
+  text-align: left;
+  width: 60%;
+}
+#wrapper #buttons-container {
+  margin: 0 auto;
+  width: 80%;
+  border: 1px solid black;
+  text-align: center;
+  margin-top: 50px;
+}
 
 /*# sourceMappingURL=main_styles.css.map */

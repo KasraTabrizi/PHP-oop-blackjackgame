@@ -1,0 +1,27 @@
+#wrapper{
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;
+    border: 1px solid black;
+
+    #player-container{
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid black;
+        margin-top: 50px;
+
+        .player-box{
+            border: 1px solid black;
+            text-align: left;
+            width: 60%;
+        }
+    }
+
+    #buttons-container{
+        margin: 0 auto;
+        width: 80%;
+        border: 1px solid black;
+        text-align: center;
+        margin-top: 50px;
+    }
+}
