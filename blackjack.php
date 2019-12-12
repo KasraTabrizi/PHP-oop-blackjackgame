@@ -3,11 +3,12 @@
     class Blackjack{
 
         //properties
-        $score;
+        public $score = 0;
 
         //methods
-        function Hit(){
-            return rand(1 , 11); //return a number between 1 and 11
+        public function Hit(){
+            //$this->score =  rand(1 , 11); 
+            return  rand(1 , 11); //return a number between 1 and 11
         }
 
         function Stand(){
