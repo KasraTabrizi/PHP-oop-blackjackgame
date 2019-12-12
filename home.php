@@ -11,7 +11,7 @@
 <body>
     <div id="wrapper">
         <h1>Black Jack PHP</h1>
-        <form action="game.php" method="GET">
+        <form action="game.php" method="POST">
             <input type="submit" value="Start Game" name="startGame">
         </form>
         <h2 id="status-game">Status</h2>
@@ -19,7 +19,7 @@
             <div class="player-box">
                 <h3>Player</h3>
                 <ul>
-                    <li>Drew card number: </li>
+                    <li>Drew card number:<?php echo $test; ?> </li>
                     <li>score: </li>
                 </ul>
             </div>

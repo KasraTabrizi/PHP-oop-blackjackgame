@@ -6,12 +6,16 @@ session_start();
 //include blackjack.php file which contains the blackjack clas
 require 'blackjack.php'; 
 
+$test = 0;
+
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
+    $test = 1;
+}
 
 
 
 
 
-
-
-
+//include the form-view php file and give error if something happens
+require 'home.php';
 ?>
