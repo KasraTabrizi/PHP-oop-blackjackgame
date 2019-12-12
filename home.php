@@ -11,7 +11,7 @@
 <body>
     <div id="wrapper">
         <h1>Black Jack PHP</h1>
-        <form action="game.html" method="GET">
+        <form action="game.php" method="GET">
             <input type="submit" value="Start Game" name="startGame">
         </form>
         <h2 id="status-game">Status</h2>
@@ -32,7 +32,7 @@
             </div>
         </div>
         <div id="buttons-container">
-            <form action="game.html" method="POST">
+            <form action="game.php" method="POST">
                 <input type="submit" value="Hit" name="hit">
                 <input type="submit" value="Stand" name="stand">
                 <input type="submit" value="Surrender" name="surrender">
