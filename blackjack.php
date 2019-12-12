@@ -3,7 +3,7 @@
     class Blackjack{
 
         //properties
-        $score = 0;
+        $score;
 
         //methods
         function Hit(){
