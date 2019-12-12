@@ -2,7 +2,6 @@
 //this line makes PHP behave in a more strict way
 declare(strict_types=1);
 
-
 //include blackjack.php file which contains the blackjack clas
 require 'blackjack.php'; 
 //CREATE A OBJECT FOR PLAYER AND DEALER 
@@ -15,7 +14,6 @@ session_start();
 $cardnumPlayer = 0;
 $statusMessage = "";
 
-
 function whatIsHappening() {
     echo '<h2>$_GET</h2>';
     var_dump($_GET);
@@ -27,10 +25,30 @@ function whatIsHappening() {
     var_dump($_SESSION);
 }
 
-//FUNCTION FOR CHANGING STATUS MESSAGE
-// function updateStatusMessage(){
-
-// }
+//FUNCTION THAT HANDLES THE STAND
+function handleStand($player,$dealer){
+    $minValue = 0;
+    while($minValue <= 15){
+        $_SESSION['curCardDealer'] = $dealer->Hit();
+        $_SESSION['dealer']->score += $_SESSION['curCardDealer'];
+        $minValue = $_SESSION['dealer']->score;
+    }
+    if($_SESSION['dealer']->score > 21){
+        return "Player won!";
+    }
+    elseif($_SESSION['dealer']->score === 21 && $_SESSION['player']->score === 21){
+        return "A tie!";
+    }
+    elseif($_SESSION['dealer']->score === $_SESSION['player']->score){
+        return "A tie!";
+    }
+    elseif($_SESSION['dealer']->score > $_SESSION['player']->score){
+        return "Dealer won!";
+    }
+    else{
+        return "Player won!";
+    }
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
     //IF YOU PRESS ON THE BUTTON STARTGAME
@@ -82,32 +100,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     if(isset($_POST['surrender'])){
         //CHANGE STATUS MESSAGE 
         $statusMessage = "Player has Lost!";
-    }
-}
-//whatIsHappening();
-
-//FUNCTION THAT HANDLES THE STAND
-function handleStand($player,$dealer){
-    $minValue = 0;
-    while($minValue <= 15){
-        $_SESSION['curCardDealer'] = $dealer->Hit();
-        $_SESSION['dealer']->score += $_SESSION['curCardDealer'];
-        $minValue = $_SESSION['dealer']->score;
-    }
-    if($_SESSION['dealer']->score > 21){
-        return "Player won!";
-    }
-    elseif($_SESSION['dealer']->score === 21 && $_SESSION['player']->score === 21){
-        return "A tie!";
-    }
-    elseif($_SESSION['dealer']->score === $_SESSION['player']->score){
-        return "A tie!";
-    }
-    elseif($_SESSION['dealer']->score > $_SESSION['player']->score){
-        return "Dealer won!";
-    }
-    else{
-        return "Player won!";
     }
 }
 //include the form-view php file and give error if something happens
