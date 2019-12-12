@@ -6,13 +6,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <?php require 'game.php' ?>
 </head>
 
 <body>
-    <h1>Black Jack PHP</h1>
-    <form action="game.html" method="GET">
-        <input type="submit" value="Start Game" name="startGame">
-    </form>
+    <div id="wrapper">
+        <h1>Black Jack PHP</h1>
+        <form action="game.html" method="GET">
+            <input type="submit" value="Start Game" name="startGame">
+        </form>
+        <h2 id="status-game">Status</h2>
+        <div id="player-container">
+            <div class="player-box">
+                <h3>Player</h3>
+                <ul>
+                    <li>Drew card number: </li>
+                    <li>score: </li>
+                </ul>
+            </div>
+            <div class="player-box">
+                <h3>Dealer</h3>
+                <ul>
+                    <li>Drew card number: </li>
+                    <li>score: </li>
+                </ul>
+            </div>
+        </div>
+        <div id="buttons-container">
+            <form action="game.html" method="POST">
+                <input type="submit" value="Hit" name="hit">
+                <input type="submit" value="Stand" name="stand">
+                <input type="submit" value="Surrender" name="surrender">
+            </form>
+        </div>
+    </div>
 </body>
 
 </html>
