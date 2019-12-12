@@ -14,7 +14,11 @@
         <form action="game.php" method="POST">
             <input type="submit" value="Start Game" name="startgame">
         </form>
-        <h2 id="status-game">Status</h2>
+        <h2 id="status-game">
+            <?php 
+                echo $statusMessage;
+            ?>
+        </h2>
         <div id="player-container">
             <div class="player-box">
                 <h3>Player</h3>
