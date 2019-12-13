@@ -1,6 +1,6 @@
 #wrapper{
     margin: 0 auto;
-    width: 50%;
+    width: 80%;
     text-align: center;
     border: 1px solid black;
 
@@ -23,5 +23,20 @@
         border: 1px solid black;
         text-align: center;
         margin-top: 50px;
+    }
+
+    ul{
+        display: flex;
+        justify-content: space-evenly;
+
+        .card{
+            font-size: 800%;
+            list-style-type: none;
+        }
+
+        .diamonds,
+        .hearts{
+            color: red;
+        }
     }
 }

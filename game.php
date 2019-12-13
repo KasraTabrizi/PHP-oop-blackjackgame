@@ -34,6 +34,8 @@ function whatIsHappening() {
     var_dump($_SESSION);
 }
 
+
+
 //FUNCTION THAT HANDLES THE STAND
 function handleStand($player,$dealer){
     $minValue = 0;

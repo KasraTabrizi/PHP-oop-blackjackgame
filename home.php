@@ -26,8 +26,8 @@
             <div class="player-box">
                 <h3>Player</h3>
                 <ul>
-                    <li class="card">Drew card number: <?php echo $_SESSION['curCardPlayer'];?></li>
-                    <li class="card"><?php echo $deckOfCards[4]; ?></li>
+                    <li class="card"><?php echo $deckOfCards[0][2]; ?></li>
+                    <li class="card"><?php echo $deckOfCards[0][2]; ?></li>
                     <li class="card"></li>
                     <li class="card"></li>
                     <li class="card"></li>
@@ -36,8 +36,8 @@
             <div class="player-box">
                 <h3>Dealer</h3>
                 <ul>
-                    <li class="card">Drew card number: <?php echo $_SESSION['curCardDealer'];?> </li>
-                    <li class="card"></li>
+                    <li class="card"><?php echo $deckOfCards[4]; ?></li>
+                    <li class="card"><?php echo $deckOfCards[0][2]; ?></li>
                     <li class="card"></li>
                     <li class="card"></li>
                     <li class="card"></li>
