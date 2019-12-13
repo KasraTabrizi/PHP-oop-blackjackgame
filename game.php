@@ -8,11 +8,20 @@ require 'blackjack.php';
 $player = new Blackjack();
 $dealer = new Blackjack();
 //we are going to use session variables so we need to enable sessions
-//start session after you initialized the player and dealer object or you will get an null error
+//start session after you initialized the player and dealer object or you will get a null error
 session_start();
 
 $cardnumPlayer = 0;
 $statusMessage = "";
+
+//Array of the UNIcode images of the deck of cards
+$deckOfCards = array(
+    array('&#127185','&#127186','&#127187','&#127188','&#127189','&#127190','&#127191','&#127192','&#127193','&#127194','&#127195','&#127197','&#127198'), //Clubs
+    array('&#127169','&#127170','&#127171','&#127172','&#127173','&#127174','&#127175','&#127176','&#127177','&#127178','&#127179','&#127181','&#127182'), //Diamonds
+    array('&#127153','&#127154','&#127155','&#127156','&#127157','&#127158','&#127159','&#127160','&#127161','&#127162','&#127163','&#127165','&#127166'), //Hearts
+    array('&#127137','&#127138','&#127139','&#127140','&#127141','&#127142','&#127143','&#127144','&#127145','&#127146','&#127147','&#127149','&#127150'), //Spades
+    '&#127136', //back of a card
+);
 
 function whatIsHappening() {
     echo '<h2>$_GET</h2>';
@@ -81,7 +90,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             $statusMessage = "Player has Lost!";
         }
         elseif($_SESSION['player']->score === 21){
-            $statusMessage = handleStand($player,$dealer);
+            //$statusMessage = handleStand($player,$dealer);
+            $statusMessage = $player->Stand();
         }
         elseif($_SESSION['dealer']->score > 21){
             $statusMessage = "Player won!";
@@ -94,12 +104,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     //IF YOU PRESS STAND
     if(isset($_POST['stand'])){
         $statusMessage = handleStand($player,$dealer);
+        //$statusMessage = $player->Stand();
     }
 
     //IF YOU PRESS SURRENDER
     if(isset($_POST['surrender'])){
         //CHANGE STATUS MESSAGE 
-        $statusMessage = "Player has Lost!";
+        $statusMessage = $player->Surrender();
     }
 }
 //include the form-view php file and give error if something happens

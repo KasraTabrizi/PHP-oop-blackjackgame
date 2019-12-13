@@ -26,15 +26,21 @@
             <div class="player-box">
                 <h3>Player</h3>
                 <ul>
-                    <li>Drew card number: <?php echo $_SESSION['curCardPlayer'];?></li>
-                    <li>score: <?php echo $_SESSION['player']->score;?> </li>
+                    <li class="card">Drew card number: <?php echo $_SESSION['curCardPlayer'];?></li>
+                    <li class="card"><?php echo $deckOfCards[4]; ?></li>
+                    <li class="card"></li>
+                    <li class="card"></li>
+                    <li class="card"></li>
                 </ul>
             </div>
             <div class="player-box">
                 <h3>Dealer</h3>
                 <ul>
-                    <li>Drew card number: <?php echo $_SESSION['curCardDealer'];?> </li>
-                    <li>score: <?php echo $_SESSION['dealer']->score;?> </li>
+                    <li class="card">Drew card number: <?php echo $_SESSION['curCardDealer'];?> </li>
+                    <li class="card"></li>
+                    <li class="card"></li>
+                    <li class="card"></li>
+                    <li class="card"></li>
                 </ul>
             </div>
         </div>
