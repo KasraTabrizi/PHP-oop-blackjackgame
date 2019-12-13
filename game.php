@@ -59,6 +59,37 @@ function handleStand($player,$dealer){
     }
 }
 
+function generateCard($player,$dealer){
+    $_SESSION['curCardPlayer'] = $player->Hit(); //generate two random values and pass the array to curCardPlayer
+    $_SESSION['cardsOfPlayer'][$_SESSION['counter']] = $_SESSION['curCardPlayer']; //pass the value to the cardsofPlayer SESSION variable
+
+    if($_SESSION['curCardPlayer'][1] == 0){
+        $aceValue = array(1,11);
+        $_SESSION['player']->score += $aceValue[rand(0,1)];
+    }
+    elseif($_SESSION['curCardPlayer'][1] >= 10){
+        $_SESSION['player']->score += 10;
+    }
+    else{
+        $_SESSION['player']->score += $_SESSION['curCardPlayer'][1] + 1;
+    }
+
+    $_SESSION['curCardDealer'] = $dealer->Hit(); //generate two random values and pass the array to curCardDealer
+    $_SESSION['cardsOfDealer'][$_SESSION['counter']] = $_SESSION['curCardDealer']; //pass the value to the cardsofDealer SESSION variable
+    if($_SESSION['curCardDealer'][1] == 0){
+        $aceValue = array(1,11);
+        $_SESSION['dealer']->score += $aceValue[rand(0,1)];
+    }
+    elseif($_SESSION['curCardDealer'][1] >= 10){
+        $_SESSION['dealer']->score += 10;
+    }
+    else{
+        $_SESSION['dealer']->score += $_SESSION['curCardDealer'][1] + 1;
+    }
+
+    $_SESSION['counter']++;
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
     //IF YOU PRESS ON THE BUTTON STARTGAME
     if(isset($_POST['startgame'])){
@@ -73,26 +104,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $_SESSION['cardsOfDealer'] = array(5);
         $_SESSION['counter'] = 0;
 
-        //DRAW TWO CARDS IMMEDIATELY FOR THE PLAYER AND DEALER AND LOAD IT INTO THE SCORE AND DISPLAY THE CARD ON THE PAGE
-        $_SESSION['curCardPlayer'] = $player->Hit(); //generate two random values and pass the array to curCardPlayer
-        $_SESSION['cardsOfPlayer'][$_SESSION['counter']] = $_SESSION['curCardPlayer']; //pass the value to the cardsofPlayer SESSION variable
-        $_SESSION['player']->score += $_SESSION['curCardPlayer'][1];
-
-        $_SESSION['curCardDealer'] = $dealer->Hit(); //generate two random values and pass the array to curCardDealer
-        $_SESSION['cardsOfDealer'][$_SESSION['counter']] = $_SESSION['curCardDealer']; //pass the value to the cardsofDealer SESSION variable
-        $_SESSION['dealer']->score += $_SESSION['curCardDealer'][1];
-
-        $_SESSION['counter']++;
-
-        $_SESSION['curCardPlayer'] = $player->Hit(); //generate two random values and pass the array to curCardPlayer
-        $_SESSION['cardsOfPlayer'][$_SESSION['counter']] = $_SESSION['curCardPlayer']; //pass the value to the cardsofPlayer SESSION variable
-        $_SESSION['player']->score += $_SESSION['curCardPlayer'][1];
-
-        $_SESSION['curCardDealer'] = $dealer->Hit(); //generate two random values and pass the array to curCardDealer
-        $_SESSION['cardsOfDealer'][$_SESSION['counter']] = $_SESSION['curCardDealer']; //pass the value to the cardsofDealer SESSION variable
-        $_SESSION['dealer']->score += $_SESSION['curCardDealer'][1];
-
-        $_SESSION['counter']++;
+        //DRAW TWO CARDS IMMEDIATELY FOR THE PLAYER AND DEALER AND LOAD IT INTO THE SCORE AND DISPLAY THE CARDS ON THE PAGE
+        generateCard($player,$dealer);
+        generateCard($player,$dealer);
 
         //CHANGE STATUS MESSAGE 
         $statusMessage = "Game in progress";
