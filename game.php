@@ -34,8 +34,6 @@ function whatIsHappening() {
     var_dump($_SESSION);
 }
 
-
-
 //FUNCTION THAT HANDLES THE STAND
 function handleStand($player,$dealer){
     $minValue = 0;
@@ -70,12 +68,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         //SAVE CURRENT CARD OF PLAYER AND DEALER INTO SESSION VARIABLE
         $_SESSION['curCardPlayer'] = 0;
         $_SESSION['curCardDealer'] = 0;
-        //DRAW ONE CARD IMMEDIATELY FOR THE PLAYER AND DEALER AND LOAD IT INTO THE SCORE
-        $_SESSION['curCardPlayer'] = $player->Hit();
-        $_SESSION['player']->score = $_SESSION['curCardPlayer'];
 
-        $_SESSION['curCardDealer'] = $dealer->Hit();
-        $_SESSION['dealer']->score = $_SESSION['curCardDealer'];
+        $_SESSION['cardsOfPlayer'] = array(5);
+        $_SESSION['cardsOfDealer'] = array(5);
+        $_SESSION['counter'] = 0;
+
+        //DRAW TWO CARDS IMMEDIATELY FOR THE PLAYER AND DEALER AND LOAD IT INTO THE SCORE AND DISPLAY THE CARD ON THE PAGE
+        $_SESSION['curCardPlayer'] = $player->Hit(); //generate two random values and pass the array to curCardPlayer
+        $_SESSION['cardsOfPlayer'][$_SESSION['counter']] = $_SESSION['curCardPlayer']; //pass the value to the cardsofPlayer SESSION variable
+        $_SESSION['player']->score += $_SESSION['curCardPlayer'][1];
+
+        $_SESSION['curCardDealer'] = $dealer->Hit(); //generate two random values and pass the array to curCardDealer
+        $_SESSION['cardsOfDealer'][$_SESSION['counter']] = $_SESSION['curCardDealer']; //pass the value to the cardsofDealer SESSION variable
+        $_SESSION['dealer']->score += $_SESSION['curCardDealer'][1];
+
+        $_SESSION['counter']++;
+
+        $_SESSION['curCardPlayer'] = $player->Hit(); //generate two random values and pass the array to curCardPlayer
+        $_SESSION['cardsOfPlayer'][$_SESSION['counter']] = $_SESSION['curCardPlayer']; //pass the value to the cardsofPlayer SESSION variable
+        $_SESSION['player']->score += $_SESSION['curCardPlayer'][1];
+
+        $_SESSION['curCardDealer'] = $dealer->Hit(); //generate two random values and pass the array to curCardDealer
+        $_SESSION['cardsOfDealer'][$_SESSION['counter']] = $_SESSION['curCardDealer']; //pass the value to the cardsofDealer SESSION variable
+        $_SESSION['dealer']->score += $_SESSION['curCardDealer'][1];
+
+        $_SESSION['counter']++;
+
         //CHANGE STATUS MESSAGE 
         $statusMessage = "Game in progress";
     }

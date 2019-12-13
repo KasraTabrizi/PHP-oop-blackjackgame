@@ -26,8 +26,8 @@
             <div class="player-box">
                 <h3>Player</h3>
                 <ul>
-                    <li class="card"><?php echo $deckOfCards[0][2]; ?></li>
-                    <li class="card"><?php echo $deckOfCards[0][2]; ?></li>
+                    <li class="card"><?php echo $deckOfCards[$_SESSION['cardsOfPlayer'][0][0]][$_SESSION['cardsOfPlayer'][0][1]];?></li>
+                    <li class="card"><?php echo $deckOfCards[$_SESSION['cardsOfPlayer'][1][0]][$_SESSION['cardsOfPlayer'][1][1]];?></li>
                     <li class="card"></li>
                     <li class="card"></li>
                     <li class="card"></li>
@@ -36,8 +36,8 @@
             <div class="player-box">
                 <h3>Dealer</h3>
                 <ul>
-                    <li class="card"><?php echo $deckOfCards[4]; ?></li>
-                    <li class="card"><?php echo $deckOfCards[0][2]; ?></li>
+                    <li class="card"><?php echo $deckOfCards[$_SESSION['cardsOfDealer'][0][0]][$_SESSION['cardsOfDealer'][0][1]];?></li>
+                    <li class="card"><?php echo $deckOfCards[$_SESSION['cardsOfDealer'][1][0]][$_SESSION['cardsOfDealer'][1][1]];?></li>
                     <li class="card"></li>
                     <li class="card"></li>
                     <li class="card"></li>
