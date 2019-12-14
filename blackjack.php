@@ -15,14 +15,32 @@
         }
 
         function Surrender(){
-            return "Player has Lost!";
+            return true;
         }
 
     }
 
     class Cards{
         //properties
-        
+        public $color;
+        public $suite;
+        public $cardName;
+        private $side = false; //true = front side of card; false = back side of card (default)
+        //constructor
+        public function __construct($suite, $name, $color){
+            $this->suite = $suite;
+            $this->name = $name;
+            $this->color = $color;
+        }
         //methods
+        //get the side of the card
+        public function getSide(){
+            return $this->side;
+        }
+        //turn card
+        public function turn(){
+            $this->side = !$this->side;
+        }
+
     }
 ?>
