@@ -7,6 +7,7 @@ require 'blackjack.php';
 //CREATE A OBJECT FOR PLAYER AND DEALER 
 $player = new Blackjack();
 $dealer = new Blackjack();
+
 //we are going to use session variables so we need to enable sessions
 //start session after you initialized the player and dealer object or you will get a null error
 session_start();
@@ -90,6 +91,15 @@ function generateCard($player,$dealer){
     $_SESSION['counter']++;
 }
 
+//DRAW A GIVEN AMOUNT OF RANDOM CARDS FROM THE DECK AND GIVE IT TO THE PLAYERTYPE
+function drawCard($playerType, $amount){
+    for($i = 0; $i < $amount; $i++){
+       if(empty($_SESSION["playerCard$i"])){ //check first if the SESSION variable is empty
+            $_SESSION["playerCard$i"]
+       }
+    }
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
     //IF YOU PRESS ON THE BUTTON STARTGAME
     if(isset($_POST['startgame'])){
@@ -102,12 +112,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
         $_SESSION['cardsOfPlayer'] = array(5);
         $_SESSION['cardsOfDealer'] = array(5);
+
+        //CREATE SESSION FOR MAXIMUM OF 5 CARDS FOR THE PLAYER AND 5 CARDS FOR THE DEALER 
+        for($i = 0; $i < 5; $i++){
+            $_SESSION["playerCard$i"] = '';
+        }
+        for($i = 0; $i < 5; $i++){
+            $_SESSION["dealerCard$i"] = '';
+        }
+
+        $_SESSION['playerCard1'] = '';
         $_SESSION['counter'] = 0;
 
         //DRAW TWO CARDS IMMEDIATELY FOR THE PLAYER AND DEALER AND LOAD IT INTO THE SCORE AND DISPLAY THE CARDS ON THE PAGE
         generateCard($player,$dealer);
         generateCard($player,$dealer);
 
+        var_dump($_SESSION);
         //CHANGE STATUS MESSAGE 
         $statusMessage = "Game in progress";
     }

@@ -22,15 +22,18 @@
 
     class Cards{
         //properties
-        public $color;
         public $suite;
         public $cardName;
+        public $color;
+        public $image;
         private $side = false; //true = front side of card; false = back side of card (default)
+
         //constructor
-        public function __construct($suite, $name, $color){
+        public function __construct($suite, $cardName, $color, $image){
             $this->suite = $suite;
-            $this->name = $name;
+            $this->cardName = $cardName;
             $this->color = $color;
+            $this->image = $image;
         }
         //methods
         //get the side of the card
