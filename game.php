@@ -91,11 +91,24 @@ function generateCard($player,$dealer){
     $_SESSION['counter']++;
 }
 
+function analyseRandomCard(){
+
+}
+
+function generateRandomCard(){
+    $randValues = array(rand(0 , 3), rand(0 , 12)); 
+    $suite;
+    $cardName;
+    $color;
+    $image
+    $randomCard = $deckOfCards[$randValues[0],$randValues[1]];
+}
+
 //DRAW A GIVEN AMOUNT OF RANDOM CARDS FROM THE DECK AND GIVE IT TO THE PLAYERTYPE
 function drawCard($playerType, $amount){
     for($i = 0; $i < $amount; $i++){
        if(empty($_SESSION["playerCard$i"])){ //check first if the SESSION variable is empty
-            $_SESSION["playerCard$i"]
+            $_SESSION["playerCard$i"] = new Cards();
        }
     }
 }
