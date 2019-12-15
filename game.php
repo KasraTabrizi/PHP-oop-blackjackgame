@@ -91,24 +91,61 @@ function generateCard($player,$dealer){
     $_SESSION['counter']++;
 }
 
-function analyseRandomCard(){
-
-}
-
+//GENERATE A RANDOM CARD, ANALYZE THE CARD, CREATE A CARD OBJECT AND RETURN IT  
 function generateRandomCard(){
+    GLOBAL $deckOfCards;
     $randValues = array(rand(0 , 3), rand(0 , 12)); 
+    $randomCardImage = $deckOfCards[$randValues[0]][$randValues[1]];
     $suite;
     $cardName;
     $color;
-    $image
-    $randomCard = $deckOfCards[$randValues[0],$randValues[1]];
+    //determine the suite and color of the card
+    switch($randValues[0]){
+        case 0:
+            $suite = 'Clubs';
+            $color = 'black';
+        break;
+        case 1:
+            $suite = 'Diamonds';
+            $color = 'red';
+        break;
+        case 2:
+            $suite = 'Hearts';
+            $color = 'red';
+        break;
+        case 3:
+            $suite = 'Spades';
+            $color = 'black';
+        break;
+        default:
+        break;
+    }
+    //determine the card name
+    $randValues[1]++;
+    if($randValues[1] == 1){
+        $cardName = 'Ace';
+    }
+    elseif($randValues[1] == 11){
+        $cardName = 'Jack';
+    }
+    elseif($randValues[1] == 12){
+        $cardName = 'Queen';
+    }
+    elseif($randValues[1] == 13){
+        $cardName = 'King';
+    }
+    else{
+        $cardName = strval($randValues[1]);
+    }
+
+    return new Cards($suite, $cardName, $color, $randomCardImage);
 }
 
 //DRAW A GIVEN AMOUNT OF RANDOM CARDS FROM THE DECK AND GIVE IT TO THE PLAYERTYPE
 function drawCard($playerType, $amount){
     for($i = 0; $i < $amount; $i++){
-       if(empty($_SESSION["playerCard$i"])){ //check first if the SESSION variable is empty
-            $_SESSION["playerCard$i"] = new Cards();
+       if(empty($_SESSION[$playerType."Card".$i])){ //check first if the SESSION variable is empty
+            $_SESSION[$playerType."Card".$i] = generateRandomCard();
        }
     }
 }
@@ -134,12 +171,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             $_SESSION["dealerCard$i"] = '';
         }
 
-        $_SESSION['playerCard1'] = '';
         $_SESSION['counter'] = 0;
 
         //DRAW TWO CARDS IMMEDIATELY FOR THE PLAYER AND DEALER AND LOAD IT INTO THE SCORE AND DISPLAY THE CARDS ON THE PAGE
-        generateCard($player,$dealer);
-        generateCard($player,$dealer);
+        generateCard($player, $dealer);
+        generateCard($player, $dealer);
+
+        drawCard('player', 1);
+        drawCard('dealer', 1);
 
         var_dump($_SESSION);
         //CHANGE STATUS MESSAGE 
