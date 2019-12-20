@@ -9,15 +9,12 @@
             //because the deckofCards array is a 2D array that contains an array for each suit and each suit has an array of the cards
             return array(rand(0 , 3), rand(0 , 12)); 
         }
-
         function Stand(){
 
         }
-
         function Surrender(){
             return true;
         }
-
     }
 
     class Cards{
@@ -44,6 +41,5 @@
         public function turn(){
             $this->side = !$this->side;
         }
-
     }
 ?>
