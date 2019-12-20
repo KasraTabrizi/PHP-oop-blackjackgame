@@ -141,6 +141,12 @@ function generateRandomCard(){
     return new Cards($suite, $cardName, $color, $randomCardImage);
 }
 
+function showCards($playerCards){
+    foreach($playerCards as $card){
+        echo "<li class='card'>".$card."</li>";
+    }
+}
+
 //DRAW A GIVEN AMOUNT OF RANDOM CARDS FROM THE DECK AND GIVE IT TO THE PLAYERTYPE
 function drawCard($playerType, $amount){
     for($i = 0; $i < $amount; $i++){
