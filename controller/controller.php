@@ -5,33 +5,14 @@ require '../model/model.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
     //IF YOU PRESS ON THE BUTTON STARTGAME
     if(isset($_POST['startgame'])){
-        //SAVE THE OBJECTS INTO THE SESSION VARIABLE    
-        $_SESSION['player'] = $player;
-        $_SESSION['dealer'] = $dealer;
-        // //SAVE CURRENT CARD OF PLAYER AND DEALER INTO SESSION VARIABLE
-        // $_SESSION['curCardPlayer'] = 0;
-        // $_SESSION['curCardDealer'] = 0;
-
-        // $_SESSION['cardsOfPlayer'] = array(5);
-        // $_SESSION['cardsOfDealer'] = array(5);
-
-        // //CREATE SESSION FOR MAXIMUM OF 5 CARDS FOR THE PLAYER AND 5 CARDS FOR THE DEALER 
-        // for($i = 0; $i < 5; $i++){
-        //     $_SESSION["playerCard$i"] = '';
-        // }
-        // for($i = 0; $i < 5; $i++){
-        //     $_SESSION["dealerCard$i"] = '';
-        // }
-
-        // $_SESSION['counter'] = 0;
-
-        //DRAW TWO CARDS IMMEDIATELY FOR THE PLAYER AND DEALER AND LOAD IT INTO THE SCORE AND DISPLAY THE CARDS ON THE PAGE
-        // generateCard($player, $dealer);
-        // generateCard($player, $dealer);
-
+        
         drawCard($player, 2, $deckOfCards);
         drawCard($dealer, 2, $deckOfCards);
 
+        //SAVE THE OBJECTS INTO THE SESSION VARIABLE    
+        $_SESSION['player'] = $player;
+        $_SESSION['dealer'] = $dealer;
+        
         var_dump($player);
         //CHANGE STATUS MESSAGE 
         $statusMessage = "Game in progress";
