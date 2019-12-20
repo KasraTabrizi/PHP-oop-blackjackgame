@@ -20,43 +20,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $_SESSION['player'] = $player;
         $_SESSION['dealer'] = $dealer;
 
-        var_dump($player);
         //CHANGE STATUS MESSAGE 
         $statusMessage = "Game in progress";
     }
 
     //IF YOU PRESS HIT
     if(isset($_POST['hit'])){
-
+        $dealer = $_SESSION['dealer'];
         drawCard($_SESSION['player'], 1, $deckOfCards);
 
         calculateScore($_SESSION['player']);
-        var_dump($_SESSION['player']);
-        // $_SESSION['curCardPlayer'] = $player->Hit();
-        // $_SESSION['player']->score += $_SESSION['curCardPlayer'];
+        calculateScore($dealer);
+        //var_dump($_SESSION['player']);
 
-        // $_SESSION['curCardDealer'] = $dealer->Hit();
-        // $_SESSION['dealer']->score += $_SESSION['curCardDealer'];
-
-        // if($_SESSION['player']->score > 21){
-        //     $statusMessage = "Player has Lost!";
-        // }
-        // elseif($_SESSION['player']->score === 21){
-        //     //$statusMessage = handleStand($player,$dealer);
-        //     $statusMessage = $player->Stand();
-        // }
-        // elseif($_SESSION['dealer']->score > 21){
-        //     $statusMessage = "Player won!";
-        // }
-        // elseif($_SESSION['dealer']->score === 21){
-        //     $statusMessage = "Player has Lost!";
-        // }
+        if($_SESSION['player']->score > 21){
+            $statusMessage = "Player has Lost!";
+            $cardsDealer = $dealer->getCards();
+            $cardsDealer[0]->turn();
+            $_SESSION['dealer'] = $dealer;
+        }
+        elseif($_SESSION['player']->score === 21){
+            $statusMessage = $player->Stand();
+        }
+        elseif($dealer->score > 21){
+            $statusMessage = "Player won!";
+            $cardsDealer = $dealer->getCards();
+            $cardsDealer[0]->turn();
+            $_SESSION['dealer'] = $dealer;
+        }
+        elseif($dealer->score === 21){
+            $statusMessage = "Player has Lost!";
+            $cardsDealer = $dealer->getCards();
+            $cardsDealer[0]->turn();
+            $_SESSION['dealer'] = $dealer;
+        }
     }
 
     //IF YOU PRESS STAND
     if(isset($_POST['stand'])){
         $statusMessage = handleStand($player,$dealer);
-        //$statusMessage = $player->Stand();
     }
 
     //IF YOU PRESS SURRENDER

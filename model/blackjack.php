@@ -11,7 +11,7 @@
             return array(rand(0 , 3), rand(0 , 12)); 
         }
         function stand(){
-
+            return true;
         }
         function surrender(){
             return true;
