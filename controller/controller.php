@@ -15,8 +15,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $_SESSION['player'] = $player;
         $_SESSION['dealer'] = $dealer;
 
-        var_dump($player);
-        var_dump($dealer);
+        // var_dump($player);
+        // var_dump($dealer);
         //CHANGE STATUS MESSAGE 
         $statusMessage = "Game in progress";
     }

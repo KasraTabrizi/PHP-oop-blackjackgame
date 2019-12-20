@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Black Jack PHP</title>
     <style>
-    <?php include 'styles/css/main_styles.css' ?>
+    <?php include '../styles/css/main_styles.css' ?>
     </style>
 </head>
 <?php
