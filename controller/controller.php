@@ -16,8 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         //SAVE THE OBJECTS INTO THE SESSION VARIABLE    
         $_SESSION['player'] = $player;
         $_SESSION['dealer'] = $dealer;
-
-        // var_dump($player);
+        
         // var_dump($dealer);
         //CHANGE STATUS MESSAGE 
         $statusMessage = "Game in progress";
@@ -25,25 +24,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
     //IF YOU PRESS HIT
     if(isset($_POST['hit'])){
-        $_SESSION['curCardPlayer'] = $player->Hit();
-        $_SESSION['player']->score += $_SESSION['curCardPlayer'];
+        drawCard($_SESSION['player'], 1, $deckOfCards);
+        // $_SESSION['curCardPlayer'] = $player->Hit();
+        // $_SESSION['player']->score += $_SESSION['curCardPlayer'];
 
-        $_SESSION['curCardDealer'] = $dealer->Hit();
-        $_SESSION['dealer']->score += $_SESSION['curCardDealer'];
+        // $_SESSION['curCardDealer'] = $dealer->Hit();
+        // $_SESSION['dealer']->score += $_SESSION['curCardDealer'];
 
-        if($_SESSION['player']->score > 21){
-            $statusMessage = "Player has Lost!";
-        }
-        elseif($_SESSION['player']->score === 21){
-            //$statusMessage = handleStand($player,$dealer);
-            $statusMessage = $player->Stand();
-        }
-        elseif($_SESSION['dealer']->score > 21){
-            $statusMessage = "Player won!";
-        }
-        elseif($_SESSION['dealer']->score === 21){
-            $statusMessage = "Player has Lost!";
-        }
+        // if($_SESSION['player']->score > 21){
+        //     $statusMessage = "Player has Lost!";
+        // }
+        // elseif($_SESSION['player']->score === 21){
+        //     //$statusMessage = handleStand($player,$dealer);
+        //     $statusMessage = $player->Stand();
+        // }
+        // elseif($_SESSION['dealer']->score > 21){
+        //     $statusMessage = "Player won!";
+        // }
+        // elseif($_SESSION['dealer']->score === 21){
+        //     $statusMessage = "Player has Lost!";
+        // }
     }
 
     //IF YOU PRESS STAND
