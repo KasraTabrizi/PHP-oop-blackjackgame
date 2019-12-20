@@ -8,12 +8,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         
         drawCard($player, 2, $deckOfCards);
         drawCard($dealer, 2, $deckOfCards);
+        $cardsDealer = $dealer->getCards();
+        $cardsDealer[0]->turn();
 
         //SAVE THE OBJECTS INTO THE SESSION VARIABLE    
         $_SESSION['player'] = $player;
         $_SESSION['dealer'] = $dealer;
-        
+
         var_dump($player);
+        var_dump($dealer);
         //CHANGE STATUS MESSAGE 
         $statusMessage = "Game in progress";
     }

@@ -142,7 +142,12 @@ function generateRandomCard($deckOfCards){
 
 function showCards($playerCards){
     foreach($playerCards as $card){
-        echo "<li class='card'>".$card->image."</li>";
+        if($card->getSide()){
+            echo "<li class='card'>&#127136</li>";
+        }
+        else{
+            echo "<li class='card'>".$card->image."</li>";
+        }
     }
 }
 
