@@ -142,7 +142,7 @@ function generateRandomCard($deckOfCards){
 
 function showCards($playerCards){
     foreach($playerCards as $card){
-        echo "<li class='card'>".$card."</li>";
+        echo "<li class='card'>".$card->image."</li>";
     }
 }
 

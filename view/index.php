@@ -24,7 +24,7 @@
             <div class="player-box">
                 <h3>Player score:<?php echo $_SESSION['player']->score;?></h3>
                 <ul>
-                    <?php showCards($player->getCards()); ?>
+                    <?php showCards( $player->getCards()); ?>
                 </ul>
             </div>
             <div class="player-box">
@@ -35,7 +35,7 @@
             <div class="player-box">
                 <h3>Dealer score:<?php echo $_SESSION['dealer']->score;?></h3>
                 <ul>
-                    <?php showCards($dealer->getCards()); ?>
+                    <?php showCards( $dealer->getCards()); ?>
                 </ul>
             </div>
         </div>
