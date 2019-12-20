@@ -22,7 +22,7 @@
             <div class="player-box">
                 <h3>Player score:<?php echo $_SESSION['player']->score;?></h3>
                 <ul>
-                    <?php showCards($player); ?>
+                    <?php showCards($player->getCards()); ?>
                     <li class="card"><?php echo $deckOfCards[$_SESSION['cardsOfPlayer'][0][0]][$_SESSION['cardsOfPlayer'][0][1]];?></li>
                     <li class="card"><?php echo $deckOfCards[$_SESSION['cardsOfPlayer'][1][0]][$_SESSION['cardsOfPlayer'][1][1]];?></li>
                     <li class="card"></li>
@@ -38,7 +38,7 @@
             <div class="player-box">
                 <h3>Dealer score:<?php echo $_SESSION['dealer']->score;?></h3>
                 <ul>
-                    <?php showCards($dealer); ?>
+                    <?php showCards($dealer->getCards()); ?>
                     <li class="card"><?php echo $deckOfCards[$_SESSION['cardsOfDealer'][0][0]][$_SESSION['cardsOfDealer'][0][1]];?></li>
                     <li class="card"><?php echo $deckOfCards[$_SESSION['cardsOfDealer'][1][0]][$_SESSION['cardsOfDealer'][1][1]];?></li>
                     <li class="card"></li>
