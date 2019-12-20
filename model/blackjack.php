@@ -1,5 +1,5 @@
 <?php
-    class Blackjack{
+    class BlackJack{
         //properties
         public $score = 0;
         private $cards = array();
