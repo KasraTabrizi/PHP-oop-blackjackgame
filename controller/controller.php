@@ -13,18 +13,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $cardsDealer = $dealer->getCards();
         $cardsDealer[0]->turn();
 
+        //Calculate score for the player
+        calculateScore($player);
+
         //SAVE THE OBJECTS INTO THE SESSION VARIABLE    
         $_SESSION['player'] = $player;
         $_SESSION['dealer'] = $dealer;
 
-        // var_dump($dealer);
+        var_dump($player);
         //CHANGE STATUS MESSAGE 
         $statusMessage = "Game in progress";
     }
 
     //IF YOU PRESS HIT
     if(isset($_POST['hit'])){
+
         drawCard($_SESSION['player'], 1, $deckOfCards);
+
+        calculateScore($_SESSION['player']);
+        var_dump($_SESSION['player']);
         // $_SESSION['curCardPlayer'] = $player->Hit();
         // $_SESSION['player']->score += $_SESSION['curCardPlayer'];
 

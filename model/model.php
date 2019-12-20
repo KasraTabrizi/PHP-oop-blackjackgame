@@ -61,35 +61,55 @@ function handleStand($player,$dealer){
     }
 }
 
-function generateCard($player,$dealer){
+function calculateScore($player){
     $_SESSION['curCardPlayer'] = $player->Hit(); //generate two random values and pass the array to curCardPlayer
     $_SESSION['cardsOfPlayer'][$_SESSION['counter']] = $_SESSION['curCardPlayer']; //pass the value to the cardsofPlayer SESSION variable
-
-    if($_SESSION['curCardPlayer'][1] == 0){
-        $aceValue = array(1,11);
-        $_SESSION['player']->score += $aceValue[rand(0,1)];
-    }
-    elseif($_SESSION['curCardPlayer'][1] >= 10){
-        $_SESSION['player']->score += 10;
-    }
-    else{
-        $_SESSION['player']->score += $_SESSION['curCardPlayer'][1] + 1;
-    }
-
-    $_SESSION['curCardDealer'] = $dealer->Hit(); //generate two random values and pass the array to curCardDealer
-    $_SESSION['cardsOfDealer'][$_SESSION['counter']] = $_SESSION['curCardDealer']; //pass the value to the cardsofDealer SESSION variable
-    if($_SESSION['curCardDealer'][1] == 0){
-        $aceValue = array(1,11);
-        $_SESSION['dealer']->score += $aceValue[rand(0,1)];
-    }
-    elseif($_SESSION['curCardDealer'][1] >= 10){
-        $_SESSION['dealer']->score += 10;
-    }
-    else{
-        $_SESSION['dealer']->score += $_SESSION['curCardDealer'][1] + 1;
+    $player->score = 0;
+    foreach($player->getCards() as $card){
+        //check on Ace
+        if($card->cardName === 'Ace'){
+            $aceValue = array(1,11);
+            $player->score += $aceValue[rand(0,1)];
+        }
+        elseif($card->cardName === 'Jack'){
+            $player->score += 10;
+        }
+        elseif($card->cardName === 'Queen'){
+            $player->score += 10;
+        }
+        elseif($card->cardName === 'King'){
+            $player->score += 10;
+        }
+        else{
+            $player->score += intval($card->cardName);
+        }
     }
 
-    $_SESSION['counter']++;
+    // if($_SESSION['curCardPlayer'][1] == 0){
+    //     $aceValue = array(1,11);
+    //     $_SESSION['player']->score += $aceValue[rand(0,1)];
+    // }
+    // elseif($_SESSION['curCardPlayer'][1] >= 10){
+    //     $_SESSION['player']->score += 10;
+    // }
+    // else{
+    //     $_SESSION['player']->score += $_SESSION['curCardPlayer'][1] + 1;
+    // }
+
+    // $_SESSION['curCardDealer'] = $dealer->Hit(); //generate two random values and pass the array to curCardDealer
+    // $_SESSION['cardsOfDealer'][$_SESSION['counter']] = $_SESSION['curCardDealer']; //pass the value to the cardsofDealer SESSION variable
+    // if($_SESSION['curCardDealer'][1] == 0){
+    //     $aceValue = array(1,11);
+    //     $_SESSION['dealer']->score += $aceValue[rand(0,1)];
+    // }
+    // elseif($_SESSION['curCardDealer'][1] >= 10){
+    //     $_SESSION['dealer']->score += 10;
+    // }
+    // else{
+    //     $_SESSION['dealer']->score += $_SESSION['curCardDealer'][1] + 1;
+    // }
+
+    //$_SESSION['counter']++;
 }
 
 //GENERATE A RANDOM CARD, ANALYZE THE CARD, CREATE A CARD OBJECT AND RETURN IT  
