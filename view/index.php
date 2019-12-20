@@ -10,11 +10,13 @@
     <?php include 'styles/css/main_styles.css' ?>
     </style>
 </head>
-
+<?php
+    require '../controller/controller.php';
+?>
 <body>
     <div id="wrapper">
         <h1>Black Jack PHP</h1>
-        <form action="game.php" method="POST">
+        <form action="../model/model.php" method="POST">
             <input type="submit" value="Start Game" name="startgame">
         </form>
         

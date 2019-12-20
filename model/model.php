@@ -92,8 +92,7 @@ function generateCard($player,$dealer){
 }
 
 //GENERATE A RANDOM CARD, ANALYZE THE CARD, CREATE A CARD OBJECT AND RETURN IT  
-function generateRandomCard(){
-    GLOBAL $deckOfCards;
+function generateRandomCard($deckOfCards){
     $randValues = array(rand(0 , 3), rand(0 , 12)); 
     $randomCardImage = $deckOfCards[$randValues[0]][$randValues[1]];
     $suite;
@@ -148,10 +147,10 @@ function showCards($playerCards){
 }
 
 //DRAW A GIVEN AMOUNT OF RANDOM CARDS FROM THE DECK AND GIVE IT TO THE PLAYERTYPE
-function drawCard($playerType, $amount){
+function drawCard($playerType, $amount, $deckOfCards){
     for($i = 0; $i < $amount; $i++){
        if(empty($_SESSION[$playerType."Card".$i])){ //check first if the SESSION variable is empty
-            $_SESSION[$playerType."Card".$i] = generateRandomCard();
+            $_SESSION[$playerType."Card".$i] = generateRandomCard($deckOfCards);
        }
     }
 }
