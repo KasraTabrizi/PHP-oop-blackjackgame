@@ -21,7 +21,7 @@
             array_push($this->cards, $card);
         }
 
-        function showCards(){
+        function getCards(){
             return $this->cards;
         }
     }
