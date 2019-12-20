@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         //SAVE THE OBJECTS INTO THE SESSION VARIABLE    
         $_SESSION['player'] = $player;
         $_SESSION['dealer'] = $dealer;
-        
+
         // var_dump($dealer);
         //CHANGE STATUS MESSAGE 
         $statusMessage = "Game in progress";
@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     //IF YOU PRESS SURRENDER
     if(isset($_POST['surrender'])){
         //CHANGE STATUS MESSAGE 
-        $statusMessage = $player->Surrender();
+        $statusMessage = $player->surrender();
     }
 }
 ?>

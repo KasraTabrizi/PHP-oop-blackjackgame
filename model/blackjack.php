@@ -4,16 +4,16 @@
         public $score = 0;
         private $cards = array();
         //methods
-        public function Hit(){
+        public function hit(){
             //return  rand(1 , 11); //return a number between 1 and 11
             //return an array with the first index a random number between 0 and 3 and the second index a randon number between 1 and 11.
             //because the deckofCards array is a 2D array that contains an array for each suit and each suit has an array of the cards
             return array(rand(0 , 3), rand(0 , 12)); 
         }
-        function Stand(){
+        function stand(){
 
         }
-        function Surrender(){
+        function surrender(){
             return true;
         }
 

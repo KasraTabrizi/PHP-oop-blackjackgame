@@ -93,8 +93,8 @@ function generateCard($player,$dealer){
 }
 
 //GENERATE A RANDOM CARD, ANALYZE THE CARD, CREATE A CARD OBJECT AND RETURN IT  
-function generateRandomCard($deckOfCards){
-    $randValues = array(rand(0 , 3), rand(0 , 12)); 
+function generateRandomCard($playerType, $deckOfCards){
+    $randValues = $playerType->hit();
     $randomCardImage = $deckOfCards[$randValues[0]][$randValues[1]];
     $suite;
     $cardName;
@@ -155,7 +155,7 @@ function showCards($playerCards){
 //DRAW A GIVEN AMOUNT OF RANDOM CARDS FROM THE DECK AND GIVE IT TO THE PLAYERTYPE
 function drawCard($playerType, $amount, $deckOfCards){
     for($i = 0; $i < $amount; $i++){
-        $playerType->addCard(generateRandomCard($deckOfCards));
+        $playerType->addCard(generateRandomCard($playerType, $deckOfCards));
     }
 }
 
