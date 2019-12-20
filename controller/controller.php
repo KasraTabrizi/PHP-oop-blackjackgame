@@ -6,8 +6,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     //IF YOU PRESS ON THE BUTTON STARTGAME
     if(isset($_POST['startgame'])){
         
+        //DRAW 2 CARDS FOR EACH PLAYER
         drawCard($player, 2, $deckOfCards);
         drawCard($dealer, 2, $deckOfCards);
+        //THE FIRST CARD OF THE DEALER NEEDS TO BE TURNED SO THE PLAYER CAN'T SEE IT
         $cardsDealer = $dealer->getCards();
         $cardsDealer[0]->turn();
 
