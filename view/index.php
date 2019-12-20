@@ -17,15 +17,12 @@
         <form action="game.php" method="POST">
             <input type="submit" value="Start Game" name="startgame">
         </form>
-        <h2 id="status-game">
-            <?php 
-                echo $statusMessage;
-            ?>
-        </h2>
+        
         <div id="player-container">
             <div class="player-box">
                 <h3>Player score:<?php echo $_SESSION['player']->score;?></h3>
                 <ul>
+                    <?php showCards($player); ?>
                     <li class="card"><?php echo $deckOfCards[$_SESSION['cardsOfPlayer'][0][0]][$_SESSION['cardsOfPlayer'][0][1]];?></li>
                     <li class="card"><?php echo $deckOfCards[$_SESSION['cardsOfPlayer'][1][0]][$_SESSION['cardsOfPlayer'][1][1]];?></li>
                     <li class="card"></li>
@@ -34,8 +31,14 @@
                 </ul>
             </div>
             <div class="player-box">
+                <h2 id="status-game">
+                    <?php echo $statusMessage; ?>
+                </h2>
+            </div>
+            <div class="player-box">
                 <h3>Dealer score:<?php echo $_SESSION['dealer']->score;?></h3>
                 <ul>
+                    <?php showCards($dealer); ?>
                     <li class="card"><?php echo $deckOfCards[$_SESSION['cardsOfDealer'][0][0]][$_SESSION['cardsOfDealer'][0][1]];?></li>
                     <li class="card"><?php echo $deckOfCards[$_SESSION['cardsOfDealer'][1][0]][$_SESSION['cardsOfDealer'][1][1]];?></li>
                     <li class="card"></li>

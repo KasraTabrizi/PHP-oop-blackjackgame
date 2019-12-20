@@ -2,6 +2,7 @@
     class Blackjack{
         //properties
         public $score = 0;
+        private $cards = array();
         //methods
         public function Hit(){
             //return  rand(1 , 11); //return a number between 1 and 11
@@ -14,6 +15,14 @@
         }
         function Surrender(){
             return true;
+        }
+
+        function addCard($card){
+            array_push($this->cards, $card);
+        }
+
+        function showCards(){
+            return $this->cards;
         }
     }
 
