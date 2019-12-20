@@ -8,31 +8,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         //SAVE THE OBJECTS INTO THE SESSION VARIABLE    
         $_SESSION['player'] = $player;
         $_SESSION['dealer'] = $dealer;
-        //SAVE CURRENT CARD OF PLAYER AND DEALER INTO SESSION VARIABLE
-        $_SESSION['curCardPlayer'] = 0;
-        $_SESSION['curCardDealer'] = 0;
+        // //SAVE CURRENT CARD OF PLAYER AND DEALER INTO SESSION VARIABLE
+        // $_SESSION['curCardPlayer'] = 0;
+        // $_SESSION['curCardDealer'] = 0;
 
-        $_SESSION['cardsOfPlayer'] = array(5);
-        $_SESSION['cardsOfDealer'] = array(5);
+        // $_SESSION['cardsOfPlayer'] = array(5);
+        // $_SESSION['cardsOfDealer'] = array(5);
 
-        //CREATE SESSION FOR MAXIMUM OF 5 CARDS FOR THE PLAYER AND 5 CARDS FOR THE DEALER 
-        for($i = 0; $i < 5; $i++){
-            $_SESSION["playerCard$i"] = '';
-        }
-        for($i = 0; $i < 5; $i++){
-            $_SESSION["dealerCard$i"] = '';
-        }
+        // //CREATE SESSION FOR MAXIMUM OF 5 CARDS FOR THE PLAYER AND 5 CARDS FOR THE DEALER 
+        // for($i = 0; $i < 5; $i++){
+        //     $_SESSION["playerCard$i"] = '';
+        // }
+        // for($i = 0; $i < 5; $i++){
+        //     $_SESSION["dealerCard$i"] = '';
+        // }
 
-        $_SESSION['counter'] = 0;
+        // $_SESSION['counter'] = 0;
 
         //DRAW TWO CARDS IMMEDIATELY FOR THE PLAYER AND DEALER AND LOAD IT INTO THE SCORE AND DISPLAY THE CARDS ON THE PAGE
-        generateCard($player, $dealer);
-        generateCard($player, $dealer);
+        // generateCard($player, $dealer);
+        // generateCard($player, $dealer);
 
-        drawCard('player', 1);
-        drawCard('dealer', 1);
+        drawCard($player, 2, $deckOfCards);
+        drawCard($dealer, 2, $deckOfCards);
 
-        var_dump($_SESSION);
+        var_dump($player);
         //CHANGE STATUS MESSAGE 
         $statusMessage = "Game in progress";
     }
@@ -72,6 +72,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         $statusMessage = $player->Surrender();
     }
 }
-//include the form-view php file and give error if something happens
-require 'home.php';
 ?>

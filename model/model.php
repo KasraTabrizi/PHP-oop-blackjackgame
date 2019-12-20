@@ -149,9 +149,7 @@ function showCards($playerCards){
 //DRAW A GIVEN AMOUNT OF RANDOM CARDS FROM THE DECK AND GIVE IT TO THE PLAYERTYPE
 function drawCard($playerType, $amount, $deckOfCards){
     for($i = 0; $i < $amount; $i++){
-       if(empty($_SESSION[$playerType."Card".$i])){ //check first if the SESSION variable is empty
-            $_SESSION[$playerType."Card".$i] = generateRandomCard($deckOfCards);
-       }
+        $playerType->addCard(generateRandomCard($deckOfCards));
     }
 }
 
