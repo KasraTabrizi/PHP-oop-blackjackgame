@@ -14,10 +14,12 @@ body {
 #wrapper h1 {
   font-family: "Galada", cursive;
   font-size: 2.5em;
+  color: #e2c105;
 }
 #wrapper h2,
 #wrapper h3 {
   font-family: "Galada", cursive;
+  color: #7dd42a;
 }
 #wrapper #player-container {
   display: flex;
@@ -54,11 +56,19 @@ body {
 #wrapper input[type=submit] {
   border: none;
   outline: 0;
-  background: linear-gradient(0deg, #386f93 0%, #7b9acd 100%);
+  background: linear-gradient(0deg, #386f94 0%, #7b9acd 100%);
   padding: 15px;
   color: white;
   font-size: 1.2em;
   margin: 5px;
+  box-shadow: 0px 5px 12px 0px rgba(14, 25, 32, 0.5);
+  transition: 0.2s ease-in-out;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#wrapper input[type=submit]:hover {
+  transform: translateY(3px);
+  background: linear-gradient(0deg, #386f94 0%, rgba(123, 154, 205, 0.8) 100%);
 }
 
 /*# sourceMappingURL=main_styles.css.map */
