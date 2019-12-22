@@ -1,30 +1,28 @@
 body {
-  background: linear-gradient(0deg, #276140 0%, #757d47 100%);
+  background-image: url("../../images/background.png");
+  background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
 }
 
 #wrapper {
   margin: 0 auto;
-  width: 80%;
+  margin-top: 100px;
+  width: 60%;
   text-align: center;
-  border: 1px solid black;
 }
 #wrapper #player-container {
   display: flex;
   justify-content: space-between;
-  border: 1px solid black;
   margin-top: 50px;
 }
 #wrapper #player-container .player-box {
-  border: 1px solid black;
   text-align: left;
   width: 60%;
 }
 #wrapper #buttons-container {
   margin: 0 auto;
   width: 80%;
-  border: 1px solid black;
   text-align: center;
   margin-top: 50px;
 }
@@ -44,6 +42,15 @@ body {
 }
 #wrapper ul .red {
   color: red;
+}
+#wrapper input[type=submit] {
+  border: none;
+  outline: 0;
+  background: linear-gradient(0deg, #386f93 0%, #7b9acd 100%);
+  padding: 15px;
+  color: white;
+  font-size: 1.2em;
+  margin: 5px;
 }
 
 /*# sourceMappingURL=main_styles.css.map */
