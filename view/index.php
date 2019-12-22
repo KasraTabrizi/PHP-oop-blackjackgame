@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Black Jack PHP</title>
+    <link href="https://fonts.googleapis.com/css?family=Galada|Lobster|Pacifico&display=swap" rel="stylesheet">
     <style>
     <?php include '../styles/css/main_styles.css' ?>
     </style>
@@ -19,18 +20,17 @@
         <form action="" method="POST">
             <input type="submit" value="Start Game" name="startgame">
         </form>
-        
+        <div class="player-box">
+                <h2 id="status-game">
+                    <?php echo $statusMessage; ?>
+                </h2>
+        </div>
         <div id="player-container">
             <div class="player-box">
                 <h3>Player score:<?php echo $_SESSION['player']->score; ?></h3>
                 <ul>
                     <?php showCards( $_SESSION['player']->getCards()); ?>
                 </ul>
-            </div>
-            <div class="player-box">
-                <h2 id="status-game">
-                    <?php echo $statusMessage; ?>
-                </h2>
             </div>
             <div class="player-box">
                 <h3>Dealer score:<?php echo $_SESSION['dealer']->score;?></h3>
