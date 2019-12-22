@@ -27,13 +27,13 @@
         </div>
         <div id="player-container">
             <div class="player-box">
-                <h3>Player score:<?php echo $_SESSION['player']->score; ?></h3>
+                <h3>Player score: <?php echo $_SESSION['player']->score; ?></h3>
                 <ul>
                     <?php showCards( $_SESSION['player']->getCards()); ?>
                 </ul>
             </div>
             <div class="player-box">
-                <h3>Dealer score:<?php echo $_SESSION['dealer']->score;?></h3>
+                <h3>Dealer score: <?php echo $_SESSION['dealer']->score;?></h3>
                 <ul>
                 <?php showCards( $_SESSION['dealer']->getCards()); ?>
                 </ul>
