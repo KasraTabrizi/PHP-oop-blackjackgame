@@ -61,32 +61,6 @@ function handleStand($player,$dealer, $deckOfCards){
     }
 }
 
-// //FUNCTION THAT HANDLES THE STAND
-// function handleStand($player,$dealer){
-//     $minValue = 0;
-//     while($minValue <= 15){
-//         drawCard($dealer, 1, $deckOfCards)
-//         $_SESSION['curCardDealer'] = $dealer->Hit();
-//         $_SESSION['dealer']->score += $_SESSION['curCardDealer'];
-//         $minValue = $_SESSION['dealer']->score;
-//     }
-//     if($_SESSION['dealer']->score > 21){
-//         return "Player won!";
-//     }
-//     elseif($_SESSION['dealer']->score === 21 && $_SESSION['player']->score === 21){
-//         return "A tie!";
-//     }
-//     elseif($_SESSION['dealer']->score === $_SESSION['player']->score){
-//         return "A tie!";
-//     }
-//     elseif($_SESSION['dealer']->score > $_SESSION['player']->score){
-//         return "Dealer won!";
-//     }
-//     else{
-//         return "Player won!";
-//     }
-// }
-
 function calculateScore($player){
     $_SESSION['curCardPlayer'] = $player->Hit(); //generate two random values and pass the array to curCardPlayer
     $_SESSION['cardsOfPlayer'][$_SESSION['counter']] = $_SESSION['curCardPlayer']; //pass the value to the cardsofPlayer SESSION variable
