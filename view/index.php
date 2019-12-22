@@ -46,6 +46,7 @@
                 <input type="submit" value="Surrender" name="surrender">
             </form>
         </div>
+        <footer>&copy; 2019 Kasra Tabrizi</footer>
     </div>
 </body>
 

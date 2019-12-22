@@ -70,5 +70,10 @@ body {
   transform: translateY(3px);
   background: linear-gradient(0deg, #386f94 0%, rgba(123, 154, 205, 0.8) 100%);
 }
+#wrapper footer {
+  margin-top: 100px;
+  color: #7dd42a;
+  text-align: center;
+}
 
 /*# sourceMappingURL=main_styles.css.map */
