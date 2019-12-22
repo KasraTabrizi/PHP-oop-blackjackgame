@@ -26,14 +26,14 @@ body{
 
     #player-container{
         display: flex;
-        justify-content: space-between;
+        justify-content: space-evenly;
         //border: 1px solid black;
         margin-top: 50px;
 
         .player-box{
             //@at-root: 1px solid black;
             text-align: left;
-            width: 60%;
+            width: 20%;
         }
     }
 

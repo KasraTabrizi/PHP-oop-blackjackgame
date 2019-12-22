@@ -21,12 +21,12 @@ body {
 }
 #wrapper #player-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin-top: 50px;
 }
 #wrapper #player-container .player-box {
   text-align: left;
-  width: 60%;
+  width: 20%;
 }
 #wrapper #buttons-container {
   margin: 0 auto;
