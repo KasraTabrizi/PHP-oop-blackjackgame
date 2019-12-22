@@ -166,7 +166,7 @@ function showCards($playerCards){
             echo "<li class='card'>&#127136</li>";
         }
         else{
-            echo "<li class='card'>".$card->image."</li>";
+            echo "<li class='card ".$card->color."'>".$card->image."</li>";
         }
     }
 }

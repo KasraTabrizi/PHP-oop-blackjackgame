@@ -1,3 +1,9 @@
+body {
+  background: linear-gradient(0deg, #276140 0%, #757d47 100%);
+  background-size: cover;
+  height: 100vh;
+}
+
 #wrapper {
   margin: 0 auto;
   width: 80%;
@@ -24,14 +30,19 @@
 }
 #wrapper ul {
   display: flex;
-  justify-content: space-evenly;
 }
 #wrapper ul .card {
   font-size: 800%;
   list-style-type: none;
+  background-color: white;
+  line-height: 1;
+  padding-top: 2px;
+  border-radius: 5px;
+  margin-left: -25px;
+  border: 2px solid black;
+  transform: rotate(-10deg);
 }
-#wrapper ul .diamonds,
-#wrapper ul .hearts {
+#wrapper ul .red {
   color: red;
 }
 

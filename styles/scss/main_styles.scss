@@ -1,3 +1,11 @@
+body{
+    //background: rgb(39,97,64);
+    background: linear-gradient(0deg, rgba(39,97,64,1) 0%, rgba(117,125,71,1) 100%);
+    //background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
 #wrapper{
     margin: 0 auto;
     width: 80%;
@@ -27,15 +35,21 @@
 
     ul{
         display: flex;
-        justify-content: space-evenly;
+        //justify-content: space-evenly;
 
         .card{
             font-size: 800%;
             list-style-type: none;
+            background-color: white;
+            line-height: 1;
+            padding-top: 2px;
+            border-radius: 5px;
+            margin-left: -25px;
+            border: 2px solid black;
+            transform: rotate(-10deg);
         }
 
-        .diamonds,
-        .hearts{
+        .red{
             color: red;
         }
     }
