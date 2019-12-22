@@ -40,7 +40,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             $_SESSION['dealer'] = $dealer;
         }
         elseif($_SESSION['player']->score === 21){
-            $statusMessage = $player->Stand();
+            $statusMessage = handleStand($player,$dealer, $deckOfCards);
+            //$_SESSION['dealer'] = $dealer;
         }
         elseif($dealer->score > 21){
             $statusMessage = "Player won!";
@@ -58,13 +59,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
     //IF YOU PRESS STAND
     if(isset($_POST['stand'])){
-        $statusMessage = handleStand($player,$dealer);
+        $statusMessage = handleStand($player,$dealer,$deckOfCards);
     }
 
     //IF YOU PRESS SURRENDER
     if(isset($_POST['surrender'])){
         //CHANGE STATUS MESSAGE 
-        $statusMessage = $player->surrender();
+        if($player->surrender()){
+            $statusMessage = "Player has surrendered! Dealer wins";
+            $cardsDealer = $_SESSION['dealer']->getCards();
+            $cardsDealer[0]->turn();
+            calculateScore($_SESSION['dealer']);
+        }
     }
 }
 ?>
